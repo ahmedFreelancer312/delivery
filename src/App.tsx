@@ -10,6 +10,7 @@ import RestaurantDetail from './pages/RestaurantDetail';
 import RestaurantDashboard from './pages/RestaurantDashboard';
 import DriverDashboard from './pages/DriverDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import OrderTracking from './pages/OrderTracking';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/restaurant-dashboard" element={<RestaurantDashboard />} />
               <Route path="/driver-dashboard" element={<DriverDashboard />} />
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/order-tracking/:id" element={<OrderTracking />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
@@ -35,4 +37,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

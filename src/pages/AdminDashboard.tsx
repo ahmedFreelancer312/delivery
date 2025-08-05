@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUsers, FaStore, FaMotorcycle, FaChartBar, FaCheck, FaTimes, FaEye } from 'react-icons/fa';
+import { FaUsers, FaStore, FaMotorcycle, FaChartBar, FaCheck, FaTimes, FaEye, FaMoneyBillWave } from 'react-icons/fa';
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -10,7 +10,7 @@ const AdminDashboard: React.FC = () => {
     totalRestaurants: 45,
     totalDrivers: 120,
     totalOrders: 850,
-    totalRevenue: 45000
+    totalRevenue: 45000,
   };
 
   const pendingApprovals = [
@@ -20,7 +20,7 @@ const AdminDashboard: React.FC = () => {
       name: 'مطعم الشرق الجديد',
       email: 'restaurant@example.com',
       phone: '+966501234567',
-      status: 'pending'
+      status: 'pending',
     },
     {
       id: '2',
@@ -28,8 +28,8 @@ const AdminDashboard: React.FC = () => {
       name: 'أحمد السائق',
       email: 'driver@example.com',
       phone: '+966501234568',
-      status: 'pending'
-    }
+      status: 'pending',
+    },
   ];
 
   const recentOrders = [
@@ -39,7 +39,7 @@ const AdminDashboard: React.FC = () => {
       restaurantName: 'مطعم الشرق',
       total: 80,
       status: 'delivered',
-      time: '14:30'
+      time: '14:30',
     },
     {
       id: '2',
@@ -47,9 +47,19 @@ const AdminDashboard: React.FC = () => {
       restaurantName: 'مطعم البيتزا الإيطالية',
       total: 55,
       status: 'preparing',
-      time: '14:25'
-    }
+      time: '14:25',
+    },
   ];
+
+  // Mock commission and delivery fee data
+  const commissionSettings = {
+    restaurantCommission: 15, // 15% commission
+    deliveryFees: [
+      { distance: '0-5 كم', fee: 10 },
+      { distance: '5-10 كم', fee: 15 },
+      { distance: '10+ كم', fee: 20 },
+    ],
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -198,6 +208,16 @@ const AdminDashboard: React.FC = () => {
               }`}
             >
               التحليلات
+            </button>
+            <button
+              onClick={() => setActiveTab('commissions')}
+              className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                activeTab === 'commissions'
+                  ? 'border-primary-500 text-primary-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              إدارة الرسوم
             </button>
           </nav>
         </div>
@@ -441,9 +461,59 @@ const AdminDashboard: React.FC = () => {
             </div>
           </div>
         )}
+
+        {activeTab === 'commissions' && (
+          <div className="bg-white rounded-lg shadow">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">إدارة الرسوم والعمولات</h2>
+            </div>
+            <div className="p-6">
+              <div className="space-y-6">
+                {/* Commission Rate */}
+                <div>
+                  <h3 className="text-md font-semibold text-gray-900 mb-2">نسبة العمولة للمطاعم</h3>
+                  <div className="flex items-center space-x-4 space-x-reverse">
+                    <input
+                      type="number"
+                      defaultValue={commissionSettings.restaurantCommission}
+                      className="w-24 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                      placeholder="النسبة (%)"
+                    />
+                    <span className="text-gray-600">%</span>
+                    <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">
+                      حفظ
+                    </button>
+                  </div>
+                </div>
+
+                {/* Delivery Fees */}
+                <div>
+                  <h3 className="text-md font-semibold text-gray-900 mb-2">رسوم التوصيل حسب المسافة</h3>
+                  <div className="space-y-4">
+                    {commissionSettings.deliveryFees.map((fee, index) => (
+                      <div key={index} className="flex items-center space-x-4 space-x-reverse">
+                        <span className="text-gray-600">{fee.distance}</span>
+                        <input
+                          type="number"
+                          defaultValue={fee.fee}
+                          className="w-24 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                          placeholder="الرسوم (ريال)"
+                        />
+                        <span className="text-gray-600">ريال</span>
+                        <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">
+                          حفظ
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default AdminDashboard; 
+export default AdminDashboard;
