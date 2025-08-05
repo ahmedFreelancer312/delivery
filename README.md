@@ -1,46 +1,159 @@
-# Getting Started with Create React App
+# منصة توصيل طلبات
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+منصة توصيل طلبات متكاملة مبنيّة باستخدام React و TypeScript، تهدف إلى ربط العملاء بالمطاعم والمحلات المحلية مع خدمة توصيل فعالة.
 
-## Available Scripts
+## المميزات الرئيسية
 
-In the project directory, you can run:
+### 👥 واجهة العميل
+- تسجيل دخول سهل ومريح
+- تصفح المطاعم والمحلات
+- إضافة المنتجات إلى سلة التسوق
+- تتبع الطلبات في الوقت الفعلي
+- دفع آمن ومتعدد الطرق
 
-### `npm start`
+### 🏪 واجهة المطاعم/المحلات
+- إدارة المنتجات والقوائم
+- استقبال وإدارة الطلبات
+- تحليلات الأداء والمبيعات
+- تحديث حالة الطلبات
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🚗 واجهة سائق التوصيل
+- عرض الطلبات المتاحة
+- تتبع الطلبات في الوقت الفعلي
+- إدارة الأرباح والتوصيلات
+- خريطة مدمجة للمسارات
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 👨‍💼 واجهة الإدارة
+- إدارة المستخدمين والحسابات
+- مراجعة طلبات التسجيل
+- تحليلات شاملة للمنصة
+- إدارة الرسوم والعمولات
 
-### `npm test`
+## التقنيات المستخدمة
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18** - مكتبة واجهة المستخدم
+- **TypeScript** - لكتابة كود آمن ومنظم
+- **React Router** - للتنقل بين الصفحات
+- **Tailwind CSS** - لإطار العمل CSS
+- **React Icons** - لأيقونات جميلة
+- **Context API** - لإدارة الحالة
 
-### `npm run build`
+## التثبيت والتشغيل
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### المتطلبات
+- Node.js (الإصدار 16 أو أحدث)
+- npm أو yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### خطوات التثبيت
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. استنساخ المشروع:
+```bash
+git clone <repository-url>
+cd delivery-platform
+```
 
-### `npm run eject`
+2. تثبيت التبعيات:
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. تشغيل المشروع في وضع التطوير:
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. فتح المتصفح على العنوان:
+```
+http://localhost:3000
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## هيكل المشروع
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+src/
+├── components/          # المكونات القابلة لإعادة الاستخدام
+│   └── Header.tsx
+├── contexts/           # Context API لإدارة الحالة
+│   ├── AuthContext.tsx
+│   └── CartContext.tsx
+├── pages/             # صفحات التطبيق
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── Cart.tsx
+│   ├── RestaurantDetail.tsx
+│   ├── RestaurantDashboard.tsx
+│   ├── DriverDashboard.tsx
+│   └── AdminDashboard.tsx
+├── types/             # أنواع TypeScript
+│   └── index.ts
+├── utils/             # أدوات مساعدة
+│   └── mockData.ts
+└── assets/            # الملفات الثابتة
+```
 
-## Learn More
+## المميزات التقنية
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🔐 إدارة المصادقة
+- تسجيل دخول آمن
+- حفظ حالة المستخدم
+- حماية المسارات
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🛒 إدارة سلة التسوق
+- إضافة/إزالة المنتجات
+- تحديث الكميات
+- حفظ البيانات محلياً
+
+### 📱 تصميم متجاوب
+- يعمل على جميع الأجهزة
+- واجهة مستخدم حديثة
+- تجربة مستخدم سلسة
+
+### 🎨 واجهة مستخدم جميلة
+- تصميم عصري وأنيق
+- ألوان متناسقة
+- أيقونات واضحة
+
+## المسارات المتاحة
+
+- `/` - الصفحة الرئيسية
+- `/login` - صفحة تسجيل الدخول
+- `/cart` - سلة التسوق
+- `/restaurant/:id` - تفاصيل المطعم
+- `/restaurant-dashboard` - لوحة تحكم المطعم
+- `/driver-dashboard` - لوحة تحكم السائق
+- `/admin-dashboard` - لوحة تحكم الإدارة
+
+## البيانات الوهمية
+
+المشروع يحتوي على بيانات وهمية للاختبار:
+- 3 مطاعم مختلفة
+- 4 منتجات متنوعة
+- مستخدمين وسائقين وهميين
+
+## المساهمة
+
+نرحب بمساهماتكم! يرجى اتباع الخطوات التالية:
+
+1. Fork المشروع
+2. إنشاء فرع جديد للميزة
+3. Commit التغييرات
+4. Push إلى الفرع
+5. إنشاء Pull Request
+
+## الترخيص
+
+هذا المشروع مرخص تحت رخصة MIT.
+
+## الدعم
+
+إذا واجهت أي مشاكل أو لديك أسئلة، يرجى إنشاء issue في المستودع.
+
+---
+
+**ملاحظة**: هذا مشروع تجريبي للعرض التوضيحي. في الإنتاج، يجب إضافة:
+- خادم API حقيقي
+- قاعدة بيانات
+- نظام دفع آمن
+- خريطة حقيقية
+- نظام إشعارات
+- أمان إضافي 
